@@ -12,13 +12,6 @@ Ce projet est une application de gestion d'étudiants et de professeurs basée s
 
 ---
 
-## Prérequis
-Avant de commencer, assurez-vous d'avoir installé et lancé :
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- Git
-
----
-
 ## Installation et lancement (pas à pas)
 
 1. Cloner le dépôt
@@ -127,3 +120,4 @@ docker-compose exec backend <commande>
 
 Bonne découverte et bon développement !  
 Si vous voulez, je peux générer aussi un fichier `.env.example` ou détailler les services présents dans `docker-compose.yml`.
+
