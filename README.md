@@ -7,3 +7,9 @@ Le projet a été fait avec django comme framework backend, html/css/js pour le 
 - Aciver l'environnement virtuel avec: venv/scripts/activate
 - Installé les packages grace au requirement: pip install -r requirements.txt
 - Lancer le serveur avec: python manage.py runserver
+
+# Autre commandes
+- Pour créer un super user: python manage.py createsuperuser
+- Pour faire des migration:
+   * python manage.py makemigrations
+   * python manage.py migrate
