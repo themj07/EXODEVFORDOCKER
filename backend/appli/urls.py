@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
-    path('dashboard/', views.dashboard_view, name='dashboard'),
+    path('api/login/', views.api_login, name='api_login'),
+    path('api/dashboard/', views.api_dashboard, name='api_dashboard'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
