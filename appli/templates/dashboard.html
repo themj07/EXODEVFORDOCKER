@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - École</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div class="header">
+                <div>
+                    <h2>Tableau de bord</h2>
+                    <p class="subtitle">Bienvenue, <span id="adminName">Administrateur</span></p>
+                </div>
+                <a href="{% url 'logout' %}" class="btn btn-secondary">Déconnexion</a>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>{{ total_etudiants }}</h3>
+                    <p>Étudiants</p>
+                </div>
+                <div class="stat-card">
+                    <h3>{{ total_profs }}</h3>
+                    <p>Professeurs</p>
+                </div>
+                <div class="stat-card">
+                    <h3>{{ total }}</h3>
+                    <p>Total</p>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="students">Étudiants</button>
+                <button class="tab" data-tab="teachers">Professeurs</button>
+            </div>
+
+            <div id="students" class="content-section active">
+                <div class="user-grid">
+                    {% for etudiant in etudiants %}
+                    <div class="user-card">
+                        <h3>{{ etudiant.prenom }} {{ etudiant.nom }}</h3>
+                        <p>📧 {{ etudiant.email }}</p>
+                        <p>📚 {{ etudiant.filiere }}</p>
+                        <p>📅 {{ etudiant.niveau_etude }}</p>
+                        <span class="badge">Étudiant</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="teachers" class="content-section">
+                <div class="user-grid">
+                    {% for prof in profs %}
+                    <div class="user-card">
+                        <h3>{{ prof.prenom }} {{ prof.nom }}</h3>
+                        <p>📧 {{ prof.email }}</p>
+                        <p>📖 {{ prof.matiere_enseigne }}</p>
+                        <p>⏱️ {{ prof.annee_exp }} ans</p>
+                        <span class="badge">Professeur</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
