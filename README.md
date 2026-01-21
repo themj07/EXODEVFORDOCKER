@@ -1,15 +1,6 @@
-﻿# exoDevForDocker
- C'est un petit projet de visualisation de prof et etudiant. Il sert à s'exercer sur comment conteneuriser une appli web et la faire communiquer avec une bd postgreSQL
- elle aussi conteuneurisé.
-Le projet a été fait avec django comme framework backend, html/css/js pour le front. 
-# Pour lancer le projet:
-- créer un environnement virtuel avec: python -m venv venv
-- Aciver l'environnement virtuel avec: venv/scripts/activate
-- Installé les packages grace au requirement: pip install -r requirements.txt
-- Lancer le serveur avec: python manage.py runserver
-
-# Autre commandes
-- Pour créer un super user: python manage.py createsuperuser
-- Pour faire des migration:
-   * python manage.py makemigrations
-   * python manage.py migrate
+🎓 Projet Gestion Scolaire (RSSI) - Fullstack DockeriséCe projet est une application de gestion d'étudiants et de professeurs utilisant une architecture micro-services conteneurisée.Architecture Technique :Backend : Django 5 (API REST avec Django Rest Framework)Frontend : React.jsBase de données : PostgreSQLAdministration BDD : pgAdmin 4Conteneurisation : Docker & Docker Compose📋 PrérequisAvant de commencer, assurez-vous d'avoir installé :Docker Desktop (et qu'il est lancé).Git (pour cloner le projet).🚀 Installation et Lancement (Pas à pas)Suivez ces étapes pour lancer le projet complet en quelques minutes.1. Cloner le projetOuvrez votre terminal et récupérez le code :Bashgit clone <LIEN_DE_VOTRE_REPO_GITHUB_ICI>
+cd <NOM_DU_DOSSIER_DU_PROJET>
+2. Lancer les conteneursÀ la racine du projet (là où se trouve le fichier docker-compose.yml), exécutez :Bashdocker-compose up --build
+Attendez quelques minutes que les 4 services (db, pgadmin, backend, frontend) soient téléchargés et démarrés.3. Initialiser la Base de DonnéesUne fois que le terminal affiche que le serveur tourne, ouvrez un nouveau terminal (laissez le premier tourner) et lancez ces commandes pour créer les tables :Bashdocker-compose exec backend python manage.py migrate
+4. Créer un Administrateur (Superuser)Pour accéder à l'interface d'administration Django, créez un compte admin :Bashdocker-compose exec backend python manage.py createsuperuser
+(Suivez les instructions : entrez un nom, ignorez l'email, et choisissez un mot de passe).🌐 Accès aux ServicesUne fois lancé, voici les adresses pour accéder aux différentes parties du projet :ServiceAdresseDescriptionFrontend (React)http://localhost:3000L'interface utilisateur principale (Login/Dashboard).Backend (API)http://localhost:8000Le serveur Django.Admin Djangohttp://localhost:8000/admin/Gestion des utilisateurs et données brutes.pgAdminhttp://localhost:5050Interface graphique pour gérer la base PostgreSQL.🔐 Identifiants par défautpgAdmin (Gestion BDD)Email : admin@admin.comMot de passe : rootBase de Données (PostgreSQL)Ces infos sont gérées automatiquement par Docker, mais utiles pour pgAdmin :Host : db (⚠️ Important : ne pas mettre localhost)User : userPassword : passwordDatabase : madb🛠 Configuration de pgAdmin (Première fois)Si vous voulez voir les tables dans pgAdmin :Connectez-vous sur http://localhost:5050.Clic droit sur Servers > Register > Server...Onglet General : Nom = Ma Base Docker.Onglet Connection :Host name/address : dbUsername : userPassword : passwordSauvegardez.
