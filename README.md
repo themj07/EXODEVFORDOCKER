@@ -79,28 +79,10 @@ PostgreSQL (infos utiles pour pgAdmin)
 
 ---
 
-## Commandes utiles
-
-- Afficher les logs d'un service :
-```bash
-docker-compose logs -f backend
-```
-
-- Relancer et reconstruire (force rebuild) :
-```bash
-docker-compose up --build --remove-orphans
-```
-
-- Exécuter une commande dans le conteneur backend :
-```bash
-docker-compose exec backend <commande>
-# ex: docker-compose exec backend python manage.py loaddata initial_data.json
-```
-
----
 
 ## Dépannage rapide
 - Si les conteneurs ne démarrent pas : vérifiez que Docker Desktop est lancé et que les ports 3000, 8000, 5050 et le port PostgreSQL ne sont pas occupés.
 - Si la migration échoue, affichez les logs du backend : `docker-compose logs backend` puis exécutez `python manage.py migrate` dans le conteneur.
 - Pour tout problème lié à la base : connectez-vous à pgAdmin et vérifiez la connexion au serveur `db`.
+
 
