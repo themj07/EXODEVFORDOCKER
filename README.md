@@ -15,29 +15,29 @@ Ce projet est une application de gestion d'étudiants et de professeurs basée s
 ## Installation et lancement (pas à pas)
 
 1. Cloner le dépôt
-```bash
+
 git clone https://github.com/themj07/exoDevForDocker.git
 cd exoDevForDocker
-```
+
 
 2. Lancer les conteneurs
 Placez-vous à la racine du projet (là où se trouve `docker-compose.yml`) puis :
-```bash
+
 docker-compose up --build
-```
+
 Attendez quelques minutes le temps que les services démarrent : `db`, `pgadmin`, `backend`, `frontend`.
 
 3. Initialiser la base de données
 Ouvrez un nouveau terminal (laissez le premier en cours d'exécution) et exécutez :
-```bash
+
 docker-compose exec backend python manage.py migrate
-```
+
 
 4. Créer un administrateur (superuser)
 Pour accéder à l'interface d'administration Django :
-```bash
+
 docker-compose exec backend python manage.py createsuperuser
-```
+
 Suivez les instructions (nom d'utilisateur, mot de passe).
 
 ---
@@ -103,21 +103,4 @@ docker-compose exec backend <commande>
 - Si les conteneurs ne démarrent pas : vérifiez que Docker Desktop est lancé et que les ports 3000, 8000, 5050 et le port PostgreSQL ne sont pas occupés.
 - Si la migration échoue, affichez les logs du backend : `docker-compose logs backend` puis exécutez `python manage.py migrate` dans le conteneur.
 - Pour tout problème lié à la base : connectez-vous à pgAdmin et vérifiez la connexion au serveur `db`.
-
----
-
-## Structure (indicative)
-- backend/ : code Django
-- frontend/ : code React
-- docker-compose.yml : orchestration des services
-- README.md : (ce fichier)
-
----
-
-## Licence & Contact
-- Licence : à définir dans le dépôt.
-- Auteur / Contact : voir le dépôt GitHub.
-
-Bonne découverte et bon développement !  
-Si vous voulez, je peux générer aussi un fichier `.env.example` ou détailler les services présents dans `docker-compose.yml`.
 
